@@ -5,7 +5,6 @@ class Project extends React.Component {
     render() {
         return (
             <div className="app-large">
-                <NavBar />
                 HELLO FROM THE Project PAGE!
             </div>
         )
