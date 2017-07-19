@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Collapse, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { createContainer } from 'meteor/react-meteor-data';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -33,7 +34,8 @@ class NavBar extends React.Component {
                         </NavItem>
                         <NavItem>
                             <Link to="/auth">
-                                <NavLink>Login</NavLink>
+                                <NavLink>
+                                    {this.props.userId ? "Account" : "Login" }</NavLink>
                             </Link>
                         </NavItem>
                         </Nav>
@@ -44,4 +46,9 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar;
+export default createContainer(() => {
+    return {
+        userId: Meteor.userId(),
+        isLoggingIn: Meteor.loggingIn()
+    }
+}, NavBar);
