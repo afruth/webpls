@@ -9,12 +9,12 @@ class NavBar extends React.Component {
 
         this.toggle = this.toggle.bind(this);
         this.state = {
-        isOpen: false
+            isOpen: false
         };
     }
     toggle() {
         this.setState({
-        isOpen: !this.state.isOpen
+            isOpen: !this.state.isOpen
         });
     }
     render() {
@@ -27,15 +27,20 @@ class NavBar extends React.Component {
                     </Link>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                        <NavItem>
-                            <Link to="/project">
-                                <NavLink>Projects</NavLink>
-                            </Link>
-                        </NavItem>
+                            {this.props.userId ? 
+                                <NavItem>
+                                    <Link to="/project">
+                                        <NavLink>Projects</NavLink>
+                                    </Link>
+                                </NavItem>
+                            : null
+                            }
+                        
                         <NavItem>
                             <Link to="/auth">
                                 <NavLink>
-                                    {this.props.userId ? "Account" : "Login" }</NavLink>
+                                    {this.props.userId ? "Account" : "Login" }
+                                </NavLink>
                             </Link>
                         </NavItem>
                         </Nav>
