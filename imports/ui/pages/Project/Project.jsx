@@ -1,14 +1,29 @@
 import React from 'react';
-import NavBar from '../../components/navbar/NavBar.jsx';
-
+import { Meteor } from 'meteor/meteor';
+import { createContainer } from 'meteor/react-meteor-data';
+import DB from '../../../common/database/DB.js';
 class Project extends React.Component {
     render() {
         return (
             <div className="app-large">
-                HELLO FROM THE Project PAGE!
+                { this.props.subReady ? 
+                    this.props.projects.map((p) => {
+                        return (
+                            <div key={p._id}>
+                                {p.title}
+                            </div>
+                        )
+                    }) : "Loading"
+                }
             </div>
         )
     }
 }
 
-export default Project;
+export default createContainer(() => {
+    const sub = Meteor.subscribe('projects.user');
+    return {
+        subReady: sub.ready(),
+        projects: DB.Projects.find({ ownerId: Meteor.userId() }).fetch()
+    }
+}, Project);

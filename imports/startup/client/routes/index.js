@@ -1,7 +1,8 @@
 import React from 'react';
-import Meteor from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import { Container, Row, Col } from 'reactstrap';
-import { BrowserRouter as Router, IndexRoute, Route, Fade, Switch, browserHistory } from 'react-router-dom';
+import { BrowserRouter as Router, IndexRoute, Route, Fade, Switch, browserHistory, Redirect } from 'react-router-dom';
+import { createContainer } from 'meteor/react-meteor-data';
 
 import Home from '../../../ui/pages/Home/Home.jsx';
 import Project from '../../../ui/pages/Project/Project.jsx';
