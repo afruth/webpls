@@ -22,25 +22,23 @@ class NavBar extends React.Component {
             <div>
                 <Navbar color="faded" light toggleable>
                     <NavbarToggler right onClick={this.toggle} />
-                    <Link to="/">
-                        <NavbarBrand>WebPLS</NavbarBrand>
+                    <Link className="navbar-brand" to="/">
+                        WebPLS
                     </Link>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             {this.props.userId ? 
                                 <NavItem>
-                                    <Link to="/project">
-                                        <NavLink>Projects</NavLink>
+                                    <Link className="nav-link" to="/projects">
+                                        Projects
                                     </Link>
                                 </NavItem>
                             : null
                             }
                         
                         <NavItem>
-                            <Link to="/auth">
-                                <NavLink>
-                                    {this.props.userId ? "Account" : "Login" }
-                                </NavLink>
+                            <Link className="nav-link" to="/auth">
+                                {this.props.userId ? "Account" : "Login" }
                             </Link>
                         </NavItem>
                         </Nav>
