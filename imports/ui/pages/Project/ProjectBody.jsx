@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'reactstrap';
 
 class ProjectBody extends React.Component {
     render() {
-        console.log(this.props)
         return (
             <Container>
                 <Row>
